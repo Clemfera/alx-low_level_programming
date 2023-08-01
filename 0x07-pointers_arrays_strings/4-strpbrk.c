@@ -1,15 +1,24 @@
-#include <stddef.h> // For NULL
+#include "main.h"
+/**
+ * _strpbrk - Entry point
+ * @s: input
+ * @accept: input
+ * Return: Always 0 (Success)
+ */
+char *_strpbrk(char *s, char *accept)
+{
+		int k;
 
-char *_strpbrk(char *s, char *accept) {
-    while (*s != '\0') {
-        char *a = accept;
-        while (*a != '\0') {
-            if (*s == *a) {
-                return s;
-            }
-            a++;
-        }
-        s++;
-    }
-    return NULL;
+		while (*s)
+		{
+			for (k = 0; accept[k]; k++)
+			{
+			if (*s == accept[k])
+			return (s);
+			}
+		s++;
+		}
+
+	return ('\0');
+}
 }

@@ -1,30 +1,27 @@
-#include <stddef.h> // For NULL
+#include "main.h"
+/**
+ * _strstr - Entry point
+ * @haystack: input
+ * @needle: input
+ * Return: Always 0 (Success)
+ */
+char *_strstr(char *haystack, char *needle)
+{
+	for (; *haystack != '\0'; haystack++)
+	{
+		char *l = haystack;
+		char *p = needle;
 
-char *_strstr(char *haystack, char *needle) {
-    if (*needle == '\0') {
-        // Empty substring found at the beginning of the haystack
-        return haystack;
-    }
+		while (*l == *p && *p != '\0')
+		{
+			l++;
+			p++;
+		}
 
-    while (*haystack != '\0') {
-        char *h = haystack;
-        char *n = needle;
+		if (*p == '\0')
+			return (haystack);
+	}
 
-        // Check if the substring matches the remaining part of the haystack
-        while (*n != '\0' && *h == *n) {
-            h++;
-            n++;
-        }
-
-        // If the entire substring is found, return the starting position
-        if (*n == '\0') {
-            return haystack;
-        }
-
-        // Move to the next character in the haystack
-        haystack++;
-    }
-
-    // Substring not found
-    return NULL;
+	return (0);
+}
 }

@@ -1,16 +1,27 @@
+#include "main.h"
 #include <stdio.h>
+/**
+ * print_diagsums - Entry point
+ * @a: input
+ * @size: input
+ * Return: Always 0 (Success)
+ */
+void print_diagsums(int *a, int size)
+{
+	int sum1, sum2, y;
 
-void print_diagsums(int *a, int size) {
-    int mainDiagonalSum = 0;
-    int secondaryDiagonalSum = 0;
+	sum1 = 0;
+	sum2 = 0;
 
-    // Calculate the sum of the main diagonal and secondary diagonal
-    for (int i = 0; i < size; i++) {
-        mainDiagonalSum += a[i * size + i];  // Elements on the main diagonal are at (i, i)
-        secondaryDiagonalSum += a[i * size + (size - 1 - i)];  // Elements on the secondary diagonal are at (i, size - 1 - i)
-    }
+	for (y = 0; y < size; y++)
+	{
+		sum1 = sum1 + a[y * size + y];
+	}
 
-    // Print the sum of the diagonals
-    printf("Main diagonal sum: %d\n", mainDiagonalSum);
-    printf("Secondary diagonal sum: %d\n", secondaryDiagonalSum);
+	for (y = size - 1; y >= 0; y--)
+	{
+		sum2 += a[y * size + (size - y - 1)];
+	}
+
+	printf("%d, %d\n", sum1, sum2);
 }
